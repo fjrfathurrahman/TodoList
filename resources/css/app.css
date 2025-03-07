@@ -158,4 +158,16 @@
     body {
         @apply bg-background text-foreground font-sans;
     }
+
+    h1 {
+        @apply scroll-m-20 text-4xl font-extrabold tracking-tight lg:text-5xl
+    }
+
+    h2 {
+        @apply scroll-m-20 pb-2 text-3xl font-bold tracking-tight first:mt-0
+    }
+
+    p {
+        @apply tracking-wide text-muted-foreground
+    }
 }

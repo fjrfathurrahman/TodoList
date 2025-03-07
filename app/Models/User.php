@@ -45,4 +45,14 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
+    /**
+     * Fungsi ini mendefinisikan relasi bahwa model ini 
+     * memiliki hubungan "hasMany" (memiliki banyak) dengan model Todo.
+     * Artinya, model User memiliki banyak relasi dengan model Todo.
+     */
+    public function todos()
+    {
+        return $this->hasMany(Todo::class);
+    }
 }
