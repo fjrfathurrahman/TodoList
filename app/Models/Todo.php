@@ -10,7 +10,7 @@ class Todo extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['user_id', 'title', 'description', 'priority', 'completed', 'due_date'];
+    protected $fillable = ['user_id', 'title', 'description', 'icon', 'priority', 'completed', 'due_date'];
 
     /**
      * Fungsi ini mendefinisikan relasi bahwa model ini 
@@ -22,6 +22,19 @@ class Todo extends Model
         return $this->belongsTo(User::class);
     }
 
+    /**
+     * Fungsi ini mendefinisikan relasi bahwa model ini
+     * memiliki hubungan "hasMany" (memiliki banyak) dengan model Task.
+     * Artinya, model Todo memiliki banyak model Task.
+     */
+    public function tasks()
+    {
+        return $this->hasMany(Task::class);
+    }
+
+    /**
+     * Convert the model to its array form.
+     */
     public function toArray()
     {
         $array = parent::toArray();
