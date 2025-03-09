@@ -4,7 +4,7 @@ import { NavUser } from '@/components/nav-user';
 import { Sidebar, SidebarContent, SidebarFooter, SidebarHeader, SidebarMenu, SidebarMenuButton, SidebarMenuItem } from '@/components/ui/sidebar';
 import { type NavItem } from '@/types';
 import { Link } from '@inertiajs/react';
-import { BookOpen, Folder, LayoutGrid, StickyNote } from 'lucide-react';
+import { Bell, BookOpen, CalendarRange, ChartNoAxesCombined, FileText, Folder, Folders, Info, LayoutGrid } from 'lucide-react';
 import AppLogo from './app-logo';
 
 const mainNavItems: NavItem[] = [
@@ -14,10 +14,38 @@ const mainNavItems: NavItem[] = [
         icon: LayoutGrid,
     },
     {
-        title: 'Todos',
+        title: 'Projects',
         url: '/dashboard/todos',
-        icon: StickyNote,
-    }
+        icon: Folders,
+    },
+    {
+        title: 'Aktifitas',
+        url: '/dashboard/activities',
+        icon: ChartNoAxesCombined,
+    },
+    {
+        title: 'Kalender',
+        url: '/dashboard/calender',
+        icon: CalendarRange,
+    },
+];
+
+const centerNavItems: NavItem[] = [
+    {
+        title: 'Notifikasi',
+        url: '/dashboard/notifications',
+        icon: Bell,
+    },
+    {
+        title: 'Laporan',
+        url: '/dashboard/reports',
+        icon: FileText,
+    },
+    {
+        title: 'Info',
+        url: '/dashboard/info',
+        icon: Info,
+    },
 ];
 
 const footerNavItems: NavItem[] = [
@@ -49,7 +77,8 @@ export function AppSidebar() {
             </SidebarHeader>
 
             <SidebarContent>
-                <NavMain items={mainNavItems} />
+                <NavMain title="Menu Utama" items={mainNavItems} />
+                <NavMain title="Lainnya" items={centerNavItems} />
             </SidebarContent>
 
             <SidebarFooter>

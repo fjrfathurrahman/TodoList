@@ -1,4 +1,5 @@
 import { TYPE_TASK } from '@/types/types';
+import CardTask from '../cards/CardTask';
 
 const TaskList = ({ label, tasks, borderClass }: { label: string; tasks: TYPE_TASK[]; borderClass: string }) => {
     return (
@@ -7,7 +8,7 @@ const TaskList = ({ label, tasks, borderClass }: { label: string; tasks: TYPE_TA
                 <h2>{label}</h2>
             </div>
             <div className="mt-6 space-y-4">
-                {tasks.length > 0 ? tasks.map((todo) => <div>{todo.title}</div>) : <p>Tidak ada task status {label.toLowerCase()}.</p>}
+                {tasks.length > 0 ? tasks.map((todo) => <CardTask key={todo.id} {...todo} />) : <p>Tidak ada task status {label.toLowerCase()}.</p>}
             </div>
         </div>
     );

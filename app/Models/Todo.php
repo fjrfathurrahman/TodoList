@@ -35,13 +35,26 @@ class Todo extends Model
     /**
      * Convert the model to its array form.
      */
-    public function toArray()
-    {
-        $array = parent::toArray();
-        $array['status'] = Carbon::now()->gt(Carbon::parse($array['due_date'])) ? 'Terlambat' : null;
-        $array['due_date'] = Carbon::parse($array['due_date'])->translatedFormat('d M Y');
-        $array['created_at'] = Carbon::parse($array['created_at'])->diffForHumans();
+    /**
+ * Convert the model to its array form.
+ */
+public function toArray()
+{
+    $array = parent::toArray();
+    $dueDate = Carbon::parse($array['due_date']);
+    $now = Carbon::now();
 
-        return $array;
+    if ($now->gt($dueDate)) {
+        $array['status'] = 'Terlambat';
+    } else {
+        $array['status'] = 'Tepat Waktu';
+        $array['days_remaining'] = $now->diffInDays($dueDate) . ' hari lagi';
     }
+
+    $array['due_date'] = $dueDate->translatedFormat('d M Y');
+    $array['created_at'] = Carbon::parse($array['created_at'])->diffForHumans();
+
+    return $array;
+}
+
 }

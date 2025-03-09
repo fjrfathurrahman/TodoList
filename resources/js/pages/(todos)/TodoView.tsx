@@ -19,18 +19,16 @@ const breadcrumbs: BreadcrumbItem[] = [
     },
 ];
 
-interface PROPS {
-    todos: TYPE_TODO[];
-}
-
 // Data kategori prioritas
 const PRIORITY_CATEGORIES = [
-    { key: 'low', label: 'Low', borderClass: 'border-secondary' },
+    { key: 'low', label: 'Low', borderClass: 'border-green-400' },
     { key: 'medium', label: 'Medium', borderClass: 'border-primary' },
     { key: 'high', label: 'High', borderClass: 'border-orange-400' },
 ];
 
-export default function TodoView({ todos }: PROPS) {
+export default function TodoView({ todos }: { todos: TYPE_TODO[] }) {
+    console.log(todos);
+    
     const groupedTodos = {
         low: todos.filter((todo) => todo.priority === 'low'),
         medium: todos.filter((todo) => todo.priority === 'medium'),
@@ -44,14 +42,14 @@ export default function TodoView({ todos }: PROPS) {
             {/* Headline */}
             <div className="space-y-4 border-b pb-6">
                 <div>
-                    <h2>Daftar Todo Anda.</h2>
+                    <h2>Daftar Proyek Anda.</h2>
                     <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quasi blanditiis distinctio officia ipsa expedita, nostrum in?</p>
                 </div>
 
                 <Link href="/dashboard/todo/create">
                     <Button>
                         <Plus />
-                        Tambah Todo
+                        Tambah Proyek
                     </Button>
                 </Link>
             </div>

@@ -69,12 +69,12 @@ export default function TaskCreate({ todo }: { todo: TYPE_TODO }) {
                     <div className="flex flex-col gap-4">
                         <span>
                             <Label>Judul</Label>
-                            <Input placeholder="Masukan Judul Tugas" onChange={(e) => setData('title', e.target.value)} />
-                            <InputError message={errors.title} />
+                            <Input placeholder="Masukan Judul Tugas" required minLength={10} maxLength={225} onChange={(e) => setData('title', e.target.value)} />
                         </span>
                         <span>
                             <Label>Deskripsi</Label>
-                            <Input placeholder="Masukan Deskripsi Tugas" onChange={(e) => setData('description', e.target.value)} />
+                            <Input placeholder="Masukan Deskripsi Tugas" required minLength={25} maxLength={225} onChange={(e) => setData('description', e.target.value)} />
+                            <InputError message={errors.description} />
                         </span>
                         <span>
                             <Label>Status</Label>

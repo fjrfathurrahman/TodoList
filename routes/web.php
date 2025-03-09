@@ -37,4 +37,6 @@ Route::prefix('dashboard')->middleware(['auth', 'verified'])->group(function () 
 
     // Route Actions
     Route::post('task', [TaskController::class, 'store'])->name('task.store');
+    Route::delete('task/{task}', [TaskController::class, 'destroy'])->name('task.destroy');
+    Route::put('task/{task}', [TaskController::class, 'changeStatus'])->name('task.changeStatus');
 });

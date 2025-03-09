@@ -3,11 +3,11 @@ import { BreadcrumbItem } from '@/types';
 import { Head, useForm } from '@inertiajs/react';
 import { FormEventHandler } from 'react';
 
-import InputError from '@/components/input-error';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
+import { Textarea } from '@/components/ui/textarea';
 
 const breadcrumbs: BreadcrumbItem[] = [
     {
@@ -34,7 +34,7 @@ interface TYPES_CREATETODO {
 }
 
 export default function TodoCreate() {
-    const { data, setData, post, processing, errors, reset } = useForm<TYPES_CREATETODO>();
+    const { data, setData, post, processing, reset } = useForm<TYPES_CREATETODO>();
 
     // Handle Submit Form Tambah Todo Baru
     const handleSubmit: FormEventHandler = (e) => {
@@ -60,16 +60,15 @@ export default function TodoCreate() {
                     <div className="flex flex-col gap-4">
                         <span>
                             <Label>Judul</Label>
-                            <Input placeholder="Masukan Judul Todo" onChange={(e) => setData('title', e.target.value)} />
-                            <InputError message={errors.title} />
+                            <Input placeholder="Masukan Judul Todo" required  minLength={10} maxLength={225} onChange={(e) => setData('title', e.target.value)} />
                         </span>
                         <span>
                             <Label>Deskripsi</Label>
-                            <Input placeholder="Masukan Deskripsi Todo" onChange={(e) => setData('description', e.target.value)} />
+                            <Textarea placeholder="Masukan Deskripsi Todo" required minLength={25} maxLength={225} onChange={(e) => setData('description', e.target.value)} />
                         </span>
                         <span>
                             <Label>Icon</Label>
-                            <Input placeholder="Masukan Icon Todo ( opsional )" onChange={(e) => setData('icon', e.target.value)} />
+                            <Input placeholder="Masukan Icon Todo ( opsional )" maxLength={2} onChange={(e) => setData('icon', e.target.value)} />
                         </span>
                         <span>
                             <Label>Prioritas</Label>

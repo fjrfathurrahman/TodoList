@@ -15,8 +15,7 @@ class TodoController extends Controller
     public function index()
     {
         return Inertia::render('(todos)/TodoView', [
-            'todos' => Todo::where('user_id', Auth::id())->withCount([
-                'tasks',
+            'todos' => Todo::where('user_id', Auth::id())->withCount([ 'tasks',
                 // 'tasks as completed_tasks_count' => function ($query) {
                 //     $query->where('status', 'completed'); 
                 // }

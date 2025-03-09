@@ -40,4 +40,22 @@ class TaskController extends Controller
 
         return to_route('todo.show', $task->todo_id);
     }
+
+    /**
+     * Function untuk mengubah status Task
+     */
+    public function changeStatus(Request $request, Task $task)
+    {
+        $task->update($request->all());
+        return to_route('todo.show', $task->todo_id);
+    }
+
+    /**
+     * Function untuk menghapus Task
+     */
+    public function destroy(Task $task)
+    {
+        $task->delete();
+        return to_route('todo.show', $task->todo_id);
+    }
 }

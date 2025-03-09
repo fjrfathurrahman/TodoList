@@ -1,6 +1,7 @@
 import NotFound from '@/components/main/NotFound';
 import TaskList from '@/components/main/TaskList';
 import { Button } from '@/components/ui/button';
+import { Plus } from 'lucide-react';
 
 import AppLayout from '@/layouts/app-layout';
 import { BreadcrumbItem } from '@/types';
@@ -31,7 +32,7 @@ interface PROPS {
 const STATUS_CATEGORIES = [
     { key: 'pending', label: 'Pending', borderClass: 'border-orange-500' },
     { key: 'in_progress', label: 'Progress', borderClass: 'border-primary' },
-    { key: 'completed', label: 'High', borderClass: 'border-green-400' },
+    { key: 'completed', label: 'Completed', borderClass: 'border-green-400' },
 ];
 
 export default function TodoDetail(props: PROPS) {
@@ -52,6 +53,7 @@ export default function TodoDetail(props: PROPS) {
                 <p>{props.todo.description}</p>
 
                 <Button className="mt-4">
+                    <Plus/>
                     <Link href={route('task.create', props.todo.id)}>Tambah Tugas</Link>
                 </Button>
             </div>

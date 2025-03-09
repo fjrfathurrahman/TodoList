@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -27,5 +28,13 @@ class Task extends Model
     public function todo()
     {
         return $this->belongsTo(Todo::class);
+    }
+
+    public function toArray()
+    {
+        $array = parent::toArray();
+        $array['created_at'] = Carbon::parse($array['created_at'])->diffForHumans();
+
+        return $array;
     }
 }

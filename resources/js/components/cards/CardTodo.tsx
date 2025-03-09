@@ -12,7 +12,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../ui
 import { TYPE_TODO } from '@/types/types';
 import { Link, useForm } from '@inertiajs/react';
 
-const CardTodo = (props: TYPE_TODO & { tasks_count: number, completed_tasks_count: number }) => {
+const CardTodo = (props: TYPE_TODO & { tasks_count?: number, completed_tasks_count?: number, status?: string }) => {
     const { delete: destroy } = useForm();
 
     // Handle Delete Todo
@@ -37,7 +37,7 @@ const CardTodo = (props: TYPE_TODO & { tasks_count: number, completed_tasks_coun
                     <FileCheck size={18} />
                     <small>?/{props.tasks_count}</small>
                 </span>
-                <span className="flex items-center gap-2">
+                <span className={`flex items-center gap-2 ${props.status === 'Terlambat' && 'text-destructive'}`}>
                     <CalendarClock size={18} />
                     <small>{props.due_date}</small>
                 </span>
@@ -59,7 +59,7 @@ const CardTodo = (props: TYPE_TODO & { tasks_count: number, completed_tasks_coun
                         <DropdownMenuItem>
                             <Link href={`/dashboard/todos/${props.id}`} className="flex items-center gap-2">
                                 <Info />
-                                Detail Todo
+                                Detail Proyek
                             </Link>
                         </DropdownMenuItem>
                         <DropdownMenuItem onClick={handleDelete}>
